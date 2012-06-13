@@ -10,8 +10,8 @@ namespace LifeSpec.Conway
         public int Width { get; private set; }
 
         private readonly Dictionary<Tuple<int, int>, Cell> grid;
-        private List<Action> changesToApply = new List<Action>();
-        public IEnumerable<Cell> Cells { get { return grid.OrderBy(x => x.Key.Item1).ThenBy(x => x.Key.Item2).Select(x => x.Value); } }
+        private readonly List<Action> changesToApply = new List<Action>();
+        public IEnumerable<Cell> Cells { get { return grid.Select(x => x.Value); } }
  
         public LifeGame(int width, int height)
         {
@@ -49,23 +49,23 @@ namespace LifeSpec.Conway
 
                 if ((liveCount > 3 || liveCount < 2))
                 {
+                    //closureCell.Value.SetState(Cell.CellState.Dead);
                     changesToApply.Add(() => closureCell.Value.SetState(Cell.CellState.Dead));
-                    
                 }
-                if (liveCount == 3 || liveCount == 2)
+                else if (liveCount == 3 || liveCount == 2)
                 {
+                    //closureCell.Value.SetState(Cell.CellState.Alive);
                     changesToApply.Add(() => closureCell.Value.SetState(Cell.CellState.Alive));
                 }
             }
-            changesToApply.ForEach(x => x());
+            changesToApply.AsParallel().ForAll(x => x());
         }
 
-        public List<Cell> GetNeighbors(KeyValuePair<Tuple<int, int>, Cell> closureCell)
+        public IEnumerable<Cell> GetNeighbors(KeyValuePair<Tuple<int, int>, Cell> closureCell)
         {
-            return grid.DefaultIfEmpty().Where(x => x.Key != closureCell.Key)
+            return grid.Where(x => x.Key != closureCell.Key)
                 .Where(x => Math.Abs(closureCell.Key.Item1 - x.Key.Item1) <= 1 && Math.Abs(closureCell.Key.Item2 - x.Key.Item2) <= 1)
-                .Select(x => x.Value)
-                .ToList();
+                .Select(x => x.Value);
         }
 
         public Cell GetCell(int xPos, int yPos)
