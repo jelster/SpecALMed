@@ -24,6 +24,7 @@ namespace LifeSpec.SpecTests.Steps
         public void Given_a_cell(int xPos, int yPos)
         {
             cell = new Cell(xPos, yPos, Cell.CellState.Alive);
+            lifeGame.SpawnCell(cell);
         }
 
         [When(@"the simulation is advanced (\d+) step")]

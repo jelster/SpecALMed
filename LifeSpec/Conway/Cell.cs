@@ -18,5 +18,10 @@ namespace LifeSpec.Conway
             Position = Tuple.Create(xPos, yPos);
             State = cellState;
         }
+
+        public void SetState(CellState newState)
+        {
+            State = newState;
+        }
     }
 }
