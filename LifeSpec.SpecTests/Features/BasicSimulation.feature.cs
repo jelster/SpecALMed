@@ -70,21 +70,119 @@ namespace LifeSpec.SpecTests.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Live cell dies")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Live cell dies of loneliness")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Basic Simulation")]
-        public virtual void LiveCellDies()
+        public virtual void LiveCellDiesOfLoneliness()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Live cell dies", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Live cell dies of loneliness", ((string[])(null)));
 #line 7
 this.ScenarioSetup(scenarioInfo);
 #line 8
- testRunner.Given("A grid 60 wide by 60 high");
+ testRunner.Given("a grid 60 wide by 60 high");
 #line 9
- testRunner.And("a live cell at x15 y30");
+ testRunner.And("an alive cell at x15 y30");
 #line 10
  testRunner.When("the simulation is advanced 1 step");
 #line 11
  testRunner.Then("the cell at x15 y30 should be dead");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Live cell dies of starvation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Basic Simulation")]
+        public virtual void LiveCellDiesOfStarvation()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Live cell dies of starvation", ((string[])(null)));
+#line 13
+this.ScenarioSetup(scenarioInfo);
+#line 14
+ testRunner.Given("a grid 15 wide by 15 high");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "x",
+                        "y"});
+            table1.AddRow(new string[] {
+                        "4",
+                        "6"});
+            table1.AddRow(new string[] {
+                        "5",
+                        "5"});
+            table1.AddRow(new string[] {
+                        "5",
+                        "6"});
+            table1.AddRow(new string[] {
+                        "6",
+                        "5"});
+            table1.AddRow(new string[] {
+                        "4",
+                        "5"});
+#line 15
+ testRunner.And("live cells at the following positions:", ((string)(null)), table1);
+#line 22
+ testRunner.When("the simulation is advanced 1 step");
+#line 23
+ testRunner.Then("the cell at x5 y5 should be dead");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Live cell lives in contentment with partner")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Basic Simulation")]
+        public virtual void LiveCellLivesInContentmentWithPartner()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Live cell lives in contentment with partner", ((string[])(null)));
+#line 25
+this.ScenarioSetup(scenarioInfo);
+#line 26
+ testRunner.Given("a grid 60 wide by 60 high");
+#line 27
+ testRunner.And("an alive cell at x15 y30");
+#line 28
+ testRunner.And("an alive cell at x16 y30");
+#line 29
+ testRunner.And("an alive cell at x14 y30");
+#line 30
+ testRunner.When("the simulation is advanced 1 step");
+#line 31
+ testRunner.Then("the cell at x15 y30 should be alive");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Lazarus rising")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Basic Simulation")]
+        public virtual void LazarusRising()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lazarus rising", ((string[])(null)));
+#line 33
+this.ScenarioSetup(scenarioInfo);
+#line 34
+ testRunner.Given("a grid 12 wide by 12 high");
+#line 35
+ testRunner.And("a dead cell at x5 y5");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "x",
+                        "y"});
+            table2.AddRow(new string[] {
+                        "4",
+                        "5"});
+            table2.AddRow(new string[] {
+                        "6",
+                        "5"});
+            table2.AddRow(new string[] {
+                        "5",
+                        "6"});
+#line 36
+ testRunner.And("live cells at the following positions:", ((string)(null)), table2);
+#line 41
+ testRunner.When("the simulation is advanced 1 step");
+#line 42
+ testRunner.Then("the cell at x5 y5 should be alive");
 #line hidden
             this.ScenarioCleanup();
         }
