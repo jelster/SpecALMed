@@ -75,15 +75,15 @@ namespace LifeSpec.SpecTests.Features
         public virtual void LiveCellDies()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Live cell dies", ((string[])(null)));
-#line 8
+#line 7
 this.ScenarioSetup(scenarioInfo);
-#line 9
+#line 8
  testRunner.Given("A grid 60 wide by 60 high");
-#line 10
+#line 9
  testRunner.And("a live cell at x15 y30");
-#line 11
+#line 10
  testRunner.When("the simulation is advanced 1 step");
-#line 12
+#line 11
  testRunner.Then("the cell at x15 y30 should be dead");
 #line hidden
             this.ScenarioCleanup();

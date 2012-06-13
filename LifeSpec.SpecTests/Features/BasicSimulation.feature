@@ -4,7 +4,6 @@
 	I want to run a simulation of Conway's Game Of Life
 	so that I can stop being a dummy
 
-
 Scenario: Live cell dies 
 	Given A grid 60 wide by 60 high
 	And a live cell at x15 y30
