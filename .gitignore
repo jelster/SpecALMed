@@ -1,4 +1,5 @@
 *.ncrunchsolution
+*.ncrunchproject
 *.vsmdi
 *.testsettings
 #################
